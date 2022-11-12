@@ -19,3 +19,4 @@ namespace BankingControlPanel.Persistence.Contexts
         public DbSet<Client> Clients { get; set; }
     }
 }
+ 
