@@ -3,9 +3,9 @@ using FluentValidation;
 
 namespace BankingControlPanel.Core.Validators
 {
-    public class RegisterRequestDtoValidator : AbstractValidator<RegisterRequestDto>
+    public class LoginRequestDtoValidator : AbstractValidator<LoginRequestDto>
     {
-        public RegisterRequestDtoValidator()
+        public LoginRequestDtoValidator()
         {
             RuleFor(RegisterRequest => RegisterRequest.Email)
                 .NotEmpty()
@@ -16,12 +16,6 @@ namespace BankingControlPanel.Core.Validators
             RuleFor(RegisterRequest => RegisterRequest.Password)
                 .NotEmpty()
                 .WithMessage("Password field is required.");
-            RuleFor(RegisterRequest => RegisterRequest.ConfirmPassword)
-                .NotEmpty()
-                .WithMessage("Confirm password field is required.");
-            RuleFor(RegisterRequest => RegisterRequest.ConfirmPassword)
-                .Equal(RegisterRequest => RegisterRequest.Password)
-                .WithMessage("Passwords do not match.");
         }
     }
 }
