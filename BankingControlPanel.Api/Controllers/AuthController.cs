@@ -23,11 +23,23 @@ namespace BankingControlPanel.Api.Controllers
         Summary = "Register User",
         Description = "Register user by email and password.",
         OperationId = "RegisterUser"
-        )]
+            )]
         [HttpPost("register")]
         public async Task<ActionResult<RegisterResponseDto>> RegisterAsync([FromBody] RegisterRequestDto requestDto)
         {
             var result = await _userService.RegisterUserAsync(requestDto);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+
+        [SwaggerOperation(
+        Summary = "Login User",
+        Description = "Login user by email and password.",
+        OperationId = "LoginUser"
+        )]
+        [HttpPost("login")]
+        public async Task<ActionResult<LoginResponseDto>> LoginAsync([FromBody] LoginRequestDto requestDto)
+        {
+            var result = await _userService.LoginUserAsync(requestDto);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
     }
