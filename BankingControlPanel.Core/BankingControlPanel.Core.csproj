@@ -7,9 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\ResponseDTOs\" />
-    <Folder Include="DTOs\RequestDTOs\" />
-    <Folder Include="Interfaces\Services\" />
     <Folder Include="Interfaces\Repositories\" />
     <Folder Include="Validators\Captions\" />
   </ItemGroup>
