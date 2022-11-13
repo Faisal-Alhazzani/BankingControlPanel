@@ -42,7 +42,7 @@ namespace BankingControlPanel.Services
             {
                 errors.Add("Invalid credentials, please check the email and password entered correctly.");
                 response.Errors = errors;
-                response.IsSuccess = false;
+                response.IsSuccess = false; 
                 return response;
             }
 

@@ -10,6 +10,7 @@ namespace BankingControlPanel.Core.Models
     public class Client
     {
         public int Id { get; set; }
+        public Guid ObjectKey { get; set; }
         public int NationalId { get; set; }
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
@@ -17,6 +18,5 @@ namespace BankingControlPanel.Core.Models
         public int MobileNo { get; set; }
         public string ProfilePhoto { get; set; } = string.Empty;
         public Gender Gender { get; set; }
-
     }
 }
