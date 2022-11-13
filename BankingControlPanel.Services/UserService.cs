@@ -67,18 +67,6 @@ namespace BankingControlPanel.Services
 
         public async Task<RegisterResponseDto> RegisterUserAsync(RegisterRequestDto registerRequest)
         {
-            var errors = new List<string>();
-            var response = new RegisterResponseDto();
-
-            // case passwords do not match
-            if (registerRequest.Password != registerRequest.ConfirmPassword)
-            {
-                errors.Add("Passwords do not match");
-                response.Errors = errors;
-                response.IsSuccess = false;
-                return response; 
-            }
-
             var identityUser = new IdentityUser
             {
                 Email = registerRequest.Email,
@@ -88,6 +76,7 @@ namespace BankingControlPanel.Services
             var result = await _userManager.CreateAsync(user: identityUser,
                                                         password: registerRequest.Password);
 
+            var response = new RegisterResponseDto();
             // case created
             if (result.Succeeded)
             {
@@ -95,6 +84,7 @@ namespace BankingControlPanel.Services
                 return response;
             }
 
+            var errors = new List<string>();
             // case fail by user manager
             response.IsSuccess = false;
             response.Errors = result.Errors.Select(err => err.Description);

@@ -1,11 +1,13 @@
+using BankingControlPanel.Core.Interfaces.Common;
 using BankingControlPanel.Core.Interfaces.Services;
 using BankingControlPanel.Persistence.Contexts;
 using BankingControlPanel.Services;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -48,8 +50,13 @@ builder.Services.AddAuthentication(auth =>
     };
 });
 
+
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddControllers();
+builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
+builder.Services.AddValidatorsFromAssemblyContaining<IAssemblyMarker>();
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(s =>
