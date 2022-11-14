@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BankingControlPanel.Core.Enums
 {
-    public enum Gender
+    public enum Sex
     {
         Male = 1,
         Female = 2

@@ -11,12 +11,14 @@ namespace BankingControlPanel.Core.Models
     {
         public int Id { get; set; }
         public Guid ObjectKey { get; set; }
-        public int NationalId { get; set; }
-        public string FirstName { get; set; } = string.Empty;
-        public string LastName { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
+        public int PersonalId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; } 
+        public string Email { get; set; }
         public int MobileNo { get; set; }
-        public string ProfilePhoto { get; set; } = string.Empty;
-        public Gender Gender { get; set; }
+        public string? ProfilePhoto { get; set; }
+        public Sex Sex { get; set; }
+        public Address Address { get; set; }
+        public List<Account> Accounts { get; set; } = new();
     }
 }

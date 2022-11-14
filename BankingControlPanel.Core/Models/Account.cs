@@ -10,5 +10,6 @@ namespace BankingControlPanel.Core.Models
     {
         public int Id { get; set; }
         public Guid ObjectKey { get; set; }
+        public int ClientId { get; set; }
     }
 }
