@@ -14,7 +14,7 @@ namespace BankingControlPanel.Services
         {
             _clientRepository = clientRepository;
         }
-        public async Task<CreateClientResponseDto> CreateClientAsync(CreateClientResponeDto clientRequestDto)
+        public async Task<CreateClientResponseDto> CreateClientAsync(CreateClientRequestDto clientRequestDto)
         {
             // create client model with associated entities 
             var ClientModel = new Client()
@@ -41,15 +41,23 @@ namespace BankingControlPanel.Services
 
             // prepare response
             var response = new CreateClientResponseDto();
+            var errors = new List<string>();
             if (client is null)
             {
                 response.IsSuccess = false;
+                errors.Add("Error adding the client.");
+                response.Errors = errors;
                 return response;
             }
 
             response.IsSuccess = true;
-            response.ClientObjectkey = client.ObjectKey;
+            response.Objectkey = client.ObjectKey;
             return response;
+        }
+
+        public Task<GetClientsResponseDto> GetClientsAsync(GetClientsRequestDto getClientsRequest)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -11,4 +11,11 @@ namespace BankingControlPanel.Core.Enums
         Male = 1,
         Female = 2
     }
+    public enum ClientTableSortBy
+    {
+        FirstName = 1,
+        LastName = 2,
+        Country = 3,
+        City = 4,
+    }
 }

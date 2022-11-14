@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace BankingControlPanel.Core.Validators
 {
-    public class CreateClientRequestDtoValidator : AbstractValidator<CreateClientResponeDto>
+    public class CreateClientRequestDtoValidator : AbstractValidator<CreateClientRequestDto>
     {
         public CreateClientRequestDtoValidator()
         {
