@@ -46,6 +46,8 @@ namespace BankingControlPanel.Services
                 return response;
             }
 
+            // configure claims & token 
+
             var claims = new[] {
                 new Claim(ClaimTypes.NameIdentifier, user.Id),
                 new Claim(ClaimTypes.Email, user.Email)

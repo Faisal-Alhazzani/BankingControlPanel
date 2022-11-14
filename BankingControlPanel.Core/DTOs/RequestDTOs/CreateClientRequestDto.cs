@@ -5,20 +5,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BankingControlPanel.Core.Models
+namespace BankingControlPanel.Core.DTOs.RequestDTOs
 {
-    public class Client
+    public class CreateClientRequestDto
     {
-        public int Id { get; set; }
-        public Guid ObjectKey { get; set; }
         public string PersonalId { get; set; }
         public string FirstName { get; set; }
-        public string LastName { get; set; } 
+        public string LastName { get; set; }
         public string Email { get; set; }
-        public int MobileNo { get; set; }
+        public string MobileNo { get; set; }
         public string? ProfilePhoto { get; set; }
         public Sex Sex { get; set; }
-        public Address Address { get; set; }
-        public List<Account> Accounts { get; set; } = new();
+        public string Country { get; set; }
+        public string City { get; set; }
+        public string Street { get; set; }
+        public string ZipCode { get; set; }
     }
 }

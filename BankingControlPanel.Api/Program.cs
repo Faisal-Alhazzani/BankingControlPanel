@@ -1,6 +1,8 @@
 using BankingControlPanel.Core.Interfaces.Common;
+using BankingControlPanel.Core.Interfaces.Repositories;
 using BankingControlPanel.Core.Interfaces.Services;
 using BankingControlPanel.Persistence.Contexts;
+using BankingControlPanel.Persistence.Repositories;
 using BankingControlPanel.Services;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -52,6 +54,8 @@ builder.Services.AddAuthentication(auth =>
 
 
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IClientService, ClientService>();
+builder.Services.AddScoped<IClientRepository, ClientRepository>();
 builder.Services.AddControllers();
 builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
 builder.Services.AddValidatorsFromAssemblyContaining<IAssemblyMarker>();
