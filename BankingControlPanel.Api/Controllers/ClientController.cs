@@ -1,11 +1,12 @@
 ﻿using BankingControlPanel.Core.DTOs.RequestDTOs;
 using BankingControlPanel.Core.Interfaces.Services;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace BankingControlPanel.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ClientController : ControllerBase
@@ -22,7 +23,7 @@ namespace BankingControlPanel.Api.Controllers
         Description = "Create client",
         OperationId = "CreateClient"
         )]
-        [HttpPost("register")]
+        [HttpPost("create-client")]
         public async Task<ActionResult<CreateClientResponeDto>> CreateClientAsync([FromBody] CreateClientResponeDto requestDto)
         {
             var reult = await _clientService.CreateClientAsync(requestDto);
