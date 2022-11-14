@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BankingControlPanel.Core.DTOs.RequestDTOs
 {
-    public class CreateClientRequestDto
+    public class CreateClientResponeDto
     {
         public string PersonalId { get; set; }
         public string FirstName { get; set; }

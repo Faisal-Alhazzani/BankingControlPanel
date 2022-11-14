@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BankingControlPanel.Core.Models;
 
 namespace BankingControlPanel.Core.Interfaces.Repositories
 {
     public interface IClientRepository
     {
+        Task<Client> CreateClientAsync(Client client, Address address, Account account);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BankingControlPanel.Core.DTOs.RequestDTOs;
+using BankingControlPanel.Core.Interfaces.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -9,20 +10,23 @@ namespace BankingControlPanel.Api.Controllers
     [ApiController]
     public class ClientController : ControllerBase
     {
-        public ClientController()
-        {
+        private readonly IClientService _clientService;
 
+        public ClientController(IClientService clientService)
+        {
+            _clientService = clientService;
         }
 
         [SwaggerOperation(
-        Summary = "Register User",
-        Description = "Register user by email and password.",
-        OperationId = "RegisterUser"
+        Summary = "Create Client",
+        Description = "Create client",
+        OperationId = "CreateClient"
         )]
         [HttpPost("register")]
-        public async Task<ActionResult<CreateClientRequestDto>> RegisterAsync([FromBody] CreateClientRequestDto requestDto)
+        public async Task<ActionResult<CreateClientResponeDto>> CreateClientAsync([FromBody] CreateClientResponeDto requestDto)
         {
-            throw new NotImplementedException();
+            var reult = await _clientService.CreateClientAsync(requestDto);
+            return Ok(reult);
         }
     }
 }

@@ -8,5 +8,7 @@ namespace BankingControlPanel.Core.DTOs.ResponseDTOs
 {
     public class CreateClientResponseDto
     {
+        public Guid ClientObjectkey { get; set; }
+        public bool IsSuccess { get; set; }
     }
 }

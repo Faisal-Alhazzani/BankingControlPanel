@@ -101,8 +101,9 @@ namespace BankingControlPanel.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MobileNo")
-                        .HasColumnType("int");
+                    b.Property<string>("MobileNo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("ObjectKey")
                         .HasColumnType("uniqueidentifier");

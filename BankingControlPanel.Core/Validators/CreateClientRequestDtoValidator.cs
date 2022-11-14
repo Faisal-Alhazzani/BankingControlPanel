@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using BankingControlPanel.Core.DTOs.RequestDTOs;
 using FluentValidation;
-using System.Text;
-using System.Threading.Tasks;
-using BankingControlPanel.Core.DTOs.RequestDTOs;
 
 namespace BankingControlPanel.Core.Validators
 {
-    public class CreateClientRequestDtoValidator : AbstractValidator<CreateClientRequestDto>
+    public class CreateClientRequestDtoValidator : AbstractValidator<CreateClientResponeDto>
     {
         public CreateClientRequestDtoValidator()
         {
