@@ -1,6 +1,7 @@
 using BankingControlPanel.Core.Interfaces.Common;
 using BankingControlPanel.Core.Interfaces.Repositories;
 using BankingControlPanel.Core.Interfaces.Services;
+using BankingControlPanel.Core.Swagger;
 using BankingControlPanel.Persistence.Contexts;
 using BankingControlPanel.Persistence.Repositories;
 using BankingControlPanel.Services;
@@ -60,12 +61,14 @@ builder.Services.AddControllers();
 builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
 builder.Services.AddValidatorsFromAssemblyContaining<IAssemblyMarker>();
 
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(s =>
 {
     s.EnableAnnotations();
+    s.SchemaFilter<EnumSchemaFilter>();
+    s.ParameterFilter<ParameterFilter>();
+    s.UseInlineDefinitionsForEnums();
 });
 
 var app = builder.Build();

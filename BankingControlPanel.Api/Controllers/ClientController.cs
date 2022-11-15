@@ -21,14 +21,14 @@ namespace BankingControlPanel.Api.Controllers
 
         [SwaggerOperation(
         Summary = "Create Client",
-        Description = "Create client",
+        Description = "Create client, please see schema tap for accepted values and format",
         OperationId = "CreateClient"
         )]
         [HttpPost("create-client")]
         public async Task<ActionResult<CreateClientResponseDto>> CreateClientAsync([FromBody] CreateClientRequestDto createClientRequestDto)
         {
-            var reult = await _clientService.CreateClientAsync(createClientRequestDto);
-            return Ok(reult);
+            var result = await _clientService.CreateClientAsync(createClientRequestDto);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
 
@@ -38,11 +38,11 @@ namespace BankingControlPanel.Api.Controllers
         OperationId = "GetClients"
         )]
         [HttpGet("get-clients")]
-        public async Task<ActionResult<GetClientsResponseDto>> CreateClientAsync([FromQuery] GetClientsRequestDto getClientsRequestDto)
+        public async Task<ActionResult<PagedList<ClientResponseDto>>> GetClientsAsync([FromQuery] GetClientsRequestDto getClientsRequestDto)
         {
-            return new GetClientsResponseDto();
-/*            var reult = await _clientService.GetClientsAsync(GetClientsRequestDto);
-            return Ok(reult);*/
+            var result = await _clientService.GetClientsAsync(getClientsRequestDto);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+
         }
 
 

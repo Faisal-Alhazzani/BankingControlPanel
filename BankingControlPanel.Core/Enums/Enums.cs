@@ -13,9 +13,7 @@ namespace BankingControlPanel.Core.Enums
     }
     public enum ClientTableSortBy
     {
-        FirstName = 1,
-        LastName = 2,
-        Country = 3,
-        City = 4,
+        Name = 1,
+        Country = 2
     }
 }

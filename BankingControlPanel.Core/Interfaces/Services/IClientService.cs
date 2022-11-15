@@ -10,7 +10,7 @@ namespace BankingControlPanel.Core.Interfaces.Services
 {
     public interface IClientService
     {
-        Task<CreateClientResponseDto> CreateClientAsync(CreateClientRequestDto clientRequestDto);
-       Task<GetClientsResponseDto> GetClientsAsync(GetClientsRequestDto getClientsRequest);
+       Task<CreateClientResponseDto> CreateClientAsync(CreateClientRequestDto clientRequestDto);
+       Task<PagedList<ClientResponseDto>> GetClientsAsync(GetClientsRequestDto getClientsRequest);
     }
 }
