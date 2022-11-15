@@ -87,7 +87,11 @@ namespace BankingControlPanel.Persistence.Repositories
 
                 var totalCount = await query.CountAsync();
 
-                var result = await query.Include(c => c.Address).Include(c => c.Accounts).ToListAsync();
+                var result = await query.Skip(request.PageSize.Value * (request.Page.Value - 1))
+                    .Take(request.PageSize.Value)
+                    .Include(c => c.Address)
+                    .Include(c => c.Accounts)
+                    .ToListAsync();
 
                 return new PagedList<Client>()
                 {
