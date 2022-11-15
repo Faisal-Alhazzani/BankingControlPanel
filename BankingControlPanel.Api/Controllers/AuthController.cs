@@ -24,8 +24,8 @@ namespace BankingControlPanel.Api.Controllers
         }
 
         [SwaggerOperation(
-        Summary = "Seed roles data",
-        Description = "This is for demo purposes to seed roles table instead of using static values in migration",
+        Summary = "Seed Roles Data",
+        Description = "This is to be run once for demo purposes, to seed roles data instead of using static values in migration",
         OperationId = "SeedRole"
         )]
         [HttpPost("seed-roles")]
