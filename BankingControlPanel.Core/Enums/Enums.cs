@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BankingControlPanel.Core.Enums
+﻿namespace BankingControlPanel.Core.Enums
 {
     public enum Sex
     {

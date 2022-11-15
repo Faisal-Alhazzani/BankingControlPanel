@@ -9,6 +9,8 @@ namespace BankingControlPanel.Api.Controllers
 {
     [Authorize]
     [Route("api/[controller]")]
+    [SwaggerTag("Clients Endpoints for Admin Users Only")]
+
     [ApiController]
     public class ClientController : ControllerBase
     {
@@ -46,7 +48,5 @@ namespace BankingControlPanel.Api.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
 
         }
-
-
     }
 }

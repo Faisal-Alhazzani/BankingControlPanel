@@ -1,5 +1,4 @@
 ﻿using BankingControlPanel.Core.Enums;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;

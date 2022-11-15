@@ -28,7 +28,7 @@ namespace BankingControlPanel.Api.Controllers
         Description = "Register user by email and password.",
         OperationId = "RegisterUser"
         )]
-        [HttpPost("register")]
+        [HttpPost("register-user")]
         public async Task<ActionResult<RegisterResponseDto>> RegisterAsync([FromBody] RegisterRequestDto requestDto)
         {
             var result = await _userService.RegisterUserAsync(requestDto);
@@ -40,7 +40,7 @@ namespace BankingControlPanel.Api.Controllers
         Description = "This endpoint is just for demo purposes to register an admin user.",
         OperationId = "RegisterAdminUser"
         )]
-        [HttpPost("register")]
+        [HttpPost("register-admin")]
         public async Task<ActionResult<RegisterResponseDto>> RegisterAdminAsync([FromBody] RegisterRequestDto requestDto)
         {
             var result = await _userService.RegisterAdminAsync(requestDto);
