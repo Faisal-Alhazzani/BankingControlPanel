@@ -75,7 +75,7 @@ namespace BankingControlPanel.Services
             {
                 errors.Add("Invalid credentials, please check the email and password entered correctly.");
                 response.Errors = errors;
-                response.IsSuccess = false; 
+                response.IsSuccess = false;
                 return response;
             }
 
@@ -101,7 +101,7 @@ namespace BankingControlPanel.Services
             var tokenAsString = new JwtSecurityTokenHandler().WriteToken(token);
 
             response.Token = tokenAsString;
-            response.ExpireDate = token.ValidTo; 
+            response.ExpireDate = token.ValidTo;
             response.IsSuccess = true;
             return response;
         }
@@ -130,14 +130,14 @@ namespace BankingControlPanel.Services
 
         public async Task SeedRoles()
         {
-            if(!await _roleManager.RoleExistsAsync("Admin"))
+            if (!await _roleManager.RoleExistsAsync("Admin"))
                 await _roleManager.CreateAsync(new IdentityRole("Admin"));
 
             if (!await _roleManager.RoleExistsAsync("User"))
                 await _roleManager.CreateAsync(new IdentityRole("User"));
         }
 
-        private async Task<RegisterResponseDto> CreateUserWithRole(IdentityUser user, string password ,string role)
+        private async Task<RegisterResponseDto> CreateUserWithRole(IdentityUser user, string password, string role)
         {
             var result = await _userManager.CreateAsync(user: user,
                 password: password);
@@ -151,7 +151,6 @@ namespace BankingControlPanel.Services
                 return response;
             }
 
-            var errors = new List<string>();
             // case fail by user manager
             response.IsSuccess = false;
             response.Errors = result.Errors.Select(err => err.Description);
