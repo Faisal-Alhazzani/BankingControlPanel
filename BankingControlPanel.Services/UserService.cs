@@ -122,6 +122,15 @@ namespace BankingControlPanel.Services
             return await CreateUserWithRole(identityUser, registerRequest.Password, "User");
         }
 
+        public async Task SeedRoles()
+        {
+            if(await _roleManager.RoleExistsAsync("Admin"))
+                await _roleManager.CreateAsync(new IdentityRole("Admin"));
+
+            if (await _roleManager.RoleExistsAsync("User"))
+                await _roleManager.CreateAsync(new IdentityRole("User"));
+        }
+
         private async Task<RegisterResponseDto> CreateUserWithRole(IdentityUser user, string password ,string role)
         {
             var result = await _userManager.CreateAsync(user: user,

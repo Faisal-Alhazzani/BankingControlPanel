@@ -41,7 +41,7 @@ namespace BankingControlPanel.Persistence.Migrations
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("Accounts");
+                    b.ToTable("Accounts", (string)null);
                 });
 
             modelBuilder.Entity("BankingControlPanel.Core.Models.Address", b =>
@@ -76,7 +76,7 @@ namespace BankingControlPanel.Persistence.Migrations
                     b.HasIndex("ClientId")
                         .IsUnique();
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Addresses", (string)null);
                 });
 
             modelBuilder.Entity("BankingControlPanel.Core.Models.Client", b =>
@@ -119,7 +119,7 @@ namespace BankingControlPanel.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Clients");
+                    b.ToTable("Clients", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

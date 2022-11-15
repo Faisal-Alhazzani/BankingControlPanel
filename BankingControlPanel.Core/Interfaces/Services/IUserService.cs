@@ -9,5 +9,6 @@ namespace BankingControlPanel.Core.Interfaces.Services
         Task<RegisterResponseDto> RegisterAdminAsync(RegisterRequestDto registerRequest);
         Task<LoginResponseDto> LoginUserAsync(LoginRequestDto loginRequest);
         Task<AssignRoleResponseDto> AssignRoleToUser(string name);
+        Task SeedRoles();
     }
 }
