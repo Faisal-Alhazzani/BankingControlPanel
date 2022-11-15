@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankingControlPanel.Persistence.Migrations
 {
     [DbContext(typeof(BankingControlPanelContext))]
-    [Migration("20221115135110_initializeDB")]
-    partial class initializeDB
+    [Migration("20221115165656_initDB")]
+    partial class initDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
