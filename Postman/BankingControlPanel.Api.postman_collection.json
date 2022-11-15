@@ -1,0 +1,1119 @@
+{
+	"info": {
+		"_postman_id": "54ff4954-befb-4e0a-9960-30a93b294c75",
+		"name": "BankingControlPanel.Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Seed roles data",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/Auth/seed-roles",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Auth",
+										"seed-roles"
+									]
+								},
+								"description": "This is for demo purposes to seed roles table instead of using static values in migration"
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Auth/seed-roles",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Auth",
+												"seed-roles"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Register User",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"eiusmod\",\n  \"password\": \"id ipsum\",\n  \"confirmPassword\": \"non irure officia nostrud\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Auth/register-user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Auth",
+										"register-user"
+									]
+								},
+								"description": "Register user by email and password."
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"FaisalUser@gmail.com\",\n  \"password\": \"Aa123456@\",\n  \"confirmPassword\": \"Aa123456@\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Auth/register-user",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Auth",
+												"register-user"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 15 Nov 2022 16:23:02 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Kestrel"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"errors\": [],\n    \"isSuccess\": true\n}"
+								},
+								{
+									"name": "Fail - invalid inputs",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"eiusmod\",\n  \"password\": \"id ipsum\",\n  \"confirmPassword\": \"non irure officia nostrud\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Auth/register-user",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Auth",
+												"register-user"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json; charset=utf-8"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 15 Nov 2022 16:20:09 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Kestrel"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"traceId\": \"00-6ccc676e68bbc676bfbcac7cc5836ef2-31cbc81f09ad8fe5-00\",\n    \"errors\": {\n        \"Email\": [\n            \"Please provide correct email.\"\n        ],\n        \"ConfirmPassword\": [\n            \"Passwords do not match.\"\n        ]\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Register Admin User",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"eiusmod\",\n  \"password\": \"id ipsum\",\n  \"confirmPassword\": \"non irure officia nostrud\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Auth/register-admin",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Auth",
+										"register-admin"
+									]
+								},
+								"description": "This endpoint is just for demo purposes to register an admin user."
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"FaisalAdmin@gmail.com\",\n  \"password\": \"Aa123456@\",\n  \"confirmPassword\": \"Aa123456@\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Auth/register-admin",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Auth",
+												"register-admin"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 15 Nov 2022 16:24:21 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Kestrel"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"errors\": [],\n    \"isSuccess\": true\n}"
+								}
+							]
+						},
+						{
+							"name": "Login User",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"minim enim velit dolor qui\",\n  \"password\": \"laborum cupidatat sint\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Auth",
+										"login"
+									]
+								},
+								"description": "Login user by email and password."
+							},
+							"response": [
+								{
+									"name": "Fail - Invalid credentials",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"FaisalAdmin@gmail.com\",\n  \"password\": \"ww\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Auth/login",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Auth",
+												"login"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 15 Nov 2022 16:26:53 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Kestrel"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"token\": \"\",\n    \"isSuccess\": false,\n    \"expireDate\": null,\n    \"errors\": [\n        \"Invalid credentials, please check the email and password entered correctly.\"\n    ]\n}"
+								},
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"FaisalAdmin@gmail.com\",\n  \"password\": \"Aa123456@\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Auth/login",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Auth",
+												"login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 15 Nov 2022 20:41:38 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Kestrel"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjA0ODU0NzVmLTYzODctNDU1YS05MjFiLTc1ZTc3Yzg1ZmJhYSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6IkZhaXNhbEFkbWluQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiZXhwIjoxNjY4NTczNjk4LCJpc3MiOiJodHRwczovL2dpdGh1Yi5jb20vRmFpc2FsLUFsaGF6emFuaSIsImF1ZCI6Imh0dHBzOi8vZ2l0aHViLmNvbS9GYWlzYWwtQWxoYXp6YW5pIn0.mRQVOxn5X6_XwSJTFROEcSIpPvik5sAOpcRFisXbxwU\",\n    \"isSuccess\": true,\n    \"expireDate\": \"2022-11-16T04:41:38Z\",\n    \"errors\": []\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Client",
+					"item": [
+						{
+							"name": "Create Client",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"personalId\": \"amet minim id\",\n  \"firstName\": \"reprehenderit \",\n  \"lastName\": \"in Duis dolore elit in\",\n  \"email\": \"id enim exercitation\",\n  \"mobileNo\": \"Excepteur labore ad laborum dolore\",\n  \"profilePhoto\": \"non nisi mollit voluptate\",\n  \"sex\": 2,\n  \"country\": \"q\",\n  \"city\": \"voluptate eiusmod laboris\",\n  \"street\": \"anim irure eiusmod nos\",\n  \"zipCode\": \"amet culpa et officia\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Client/create-client",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Client",
+										"create-client"
+									]
+								},
+								"description": "Create client, please see schema tap for accepted values and format"
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"personalId\": \"12131232141\",\n  \"firstName\": \"Faisal\",\n  \"lastName\": \"Alhazzani\",\n  \"email\": \"F.Alhazzani@outlook.com\",\n  \"mobileNo\": \"+966555546135\",\n  \"profilePhoto\": \"fdf\",\n  \"sex\": 2,\n  \"country\": \"Saudi Arabia\",\n  \"city\": \"Riyadh\",\n  \"street\": \"23 st\",\n  \"zipCode\": \"11231\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Client/create-client",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Client",
+												"create-client"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 15 Nov 2022 20:42:41 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Kestrel"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"objectkey\": \"e16d1021-cc2c-4358-ad0e-22c66b2c05a0\",\n    \"isSuccess\": true,\n    \"errors\": []\n}"
+								},
+								{
+									"name": "Fail - invalid personalId",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"personalId\": \"1341\",\n  \"firstName\": \"Faisal\",\n  \"lastName\": \"Alhazzani\",\n  \"email\": \"F.Alhazzani@outlook.com\",\n  \"mobileNo\": \"+966555546135\",\n  \"profilePhoto\": \"fdf\",\n  \"sex\": 2,\n  \"country\": \"Saudi Arabia\",\n  \"city\": \"Riyadh\",\n  \"street\": \"23 st\",\n  \"zipCode\": \"11231\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Client/create-client",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Client",
+												"create-client"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json; charset=utf-8"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 15 Nov 2022 20:43:22 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Kestrel"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"traceId\": \"00-332c661ad285a8558d3c94c72d6be8af-7fefff251ab2a1f7-00\",\n    \"errors\": {\n        \"PersonalId\": [\n            \"Personal Id must be 11 characters length\"\n        ]\n    }\n}"
+								},
+								{
+									"name": "Fail - invalid mobile format",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"personalId\": \"11212121234\",\n  \"firstName\": \"Faisal\",\n  \"lastName\": \"Alhazzani\",\n  \"email\": \"F.Alhazzani@outlook.com\",\n  \"mobileNo\": \"0555546135\",\n  \"profilePhoto\": \"fdf\",\n  \"sex\": 2,\n  \"country\": \"Saudi Arabia\",\n  \"city\": \"Riyadh\",\n  \"street\": \"23 st\",\n  \"zipCode\": \"11231\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Client/create-client",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Client",
+												"create-client"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json; charset=utf-8"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 15 Nov 2022 20:44:14 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Kestrel"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"traceId\": \"00-0252e0ecaabaf06c34d1d5c274614151-14c7f25bfa970b87-00\",\n    \"errors\": {\n        \"MobileNo\": [\n            \"Invalid mobile format.\"\n        ]\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Clients",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/Client/get-clients?Page=73155039&PageSize=-99852233&SearchByName=ad mollit irure magna&SearchByPersonalID=ad mollit irure magna&SearchByEmail=ad mollit irure magna&SortBy=1&SortDescending=false",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Client",
+										"get-clients"
+									],
+									"query": [
+										{
+											"key": "Page",
+											"value": "73155039",
+											"description": "Page default value is 1"
+										},
+										{
+											"key": "PageSize",
+											"value": "-99852233",
+											"description": "Page size default value is 10"
+										},
+										{
+											"key": "SearchByName",
+											"value": "ad mollit irure magna"
+										},
+										{
+											"key": "SearchByPersonalID",
+											"value": "ad mollit irure magna"
+										},
+										{
+											"key": "SearchByEmail",
+											"value": "ad mollit irure magna"
+										},
+										{
+											"key": "SortBy",
+											"value": "1",
+											"description": "<ul><li><i>1</i> = Name</li><li><i>2</i> = Country</li></ul>"
+										},
+										{
+											"key": "SortDescending",
+											"value": "false"
+										}
+									]
+								},
+								"description": "Get clients with pagination"
+							},
+							"response": [
+								{
+									"name": "Fail - Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Client/get-clients",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Client",
+												"get-clients"
+											],
+											"query": [
+												{
+													"key": "Page",
+													"value": "73155039",
+													"description": "Page default value is 1",
+													"disabled": true
+												},
+												{
+													"key": "PageSize",
+													"value": "-99852233",
+													"description": "Page size default value is 10",
+													"disabled": true
+												},
+												{
+													"key": "SearchByName",
+													"value": "ad mollit irure magna",
+													"disabled": true
+												},
+												{
+													"key": "SearchByPersonalID",
+													"value": "ad mollit irure magna",
+													"disabled": true
+												},
+												{
+													"key": "SearchByEmail",
+													"value": "ad mollit irure magna",
+													"disabled": true
+												},
+												{
+													"key": "SortBy",
+													"value": "1",
+													"description": "<ul><li><i>1</i> = Name</li><li><i>2</i> = Country</li></ul>",
+													"disabled": true
+												},
+												{
+													"key": "SortDescending",
+													"value": "false",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 15 Nov 2022 20:45:40 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Kestrel"
+										},
+										{
+											"key": "WWW-Authenticate",
+											"value": "Bearer"
+										}
+									],
+									"cookie": [],
+									"body": null
+								},
+								{
+									"name": "Success - PageSize 10",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Client/get-clients?Page=1&PageSize=10&SortBy=1&SortDescending=false",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Client",
+												"get-clients"
+											],
+											"query": [
+												{
+													"key": "Page",
+													"value": "1",
+													"description": "Page default value is 1"
+												},
+												{
+													"key": "PageSize",
+													"value": "10",
+													"description": "Page size default value is 10"
+												},
+												{
+													"key": "SearchByName",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "SearchByPersonalID",
+													"value": "ad mollit irure magna",
+													"disabled": true
+												},
+												{
+													"key": "SearchByEmail",
+													"value": "ad mollit irure magna",
+													"disabled": true
+												},
+												{
+													"key": "SortBy",
+													"value": "1",
+													"description": "<ul><li><i>1</i> = Name</li><li><i>2</i> = Country</li></ul>"
+												},
+												{
+													"key": "SortDescending",
+													"value": "false"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 15 Nov 2022 20:50:08 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Kestrel"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"objectKey\": \"9b2de49e-0299-4263-a459-db9c9ae5be75\",\n            \"personalId\": \"11212121234\",\n            \"firstName\": \"AA\",\n            \"lastName\": \"Alhazzani\",\n            \"email\": \"F.Alhazzani@outlook.com\",\n            \"mobileNo\": \"+966555546135\",\n            \"profilePhoto\": \"fdf\",\n            \"address\": {\n                \"country\": \"Saudi Arabia\",\n                \"city\": \"Riyadh\",\n                \"street\": \"23 st\",\n                \"zipCode\": \"11231\"\n            },\n            \"accounts\": [\n                \"64aaf7a1-b8b0-4180-8661-ce9d4bd29dbf\"\n            ]\n        },\n        {\n            \"objectKey\": \"e16d1021-cc2c-4358-ad0e-22c66b2c05a0\",\n            \"personalId\": \"12131232141\",\n            \"firstName\": \"Faisal\",\n            \"lastName\": \"Alhazzani\",\n            \"email\": \"F.Alhazzani@outlook.com\",\n            \"mobileNo\": \"+966555546135\",\n            \"profilePhoto\": \"fdf\",\n            \"address\": {\n                \"country\": \"Saudi Arabia\",\n                \"city\": \"Riyadh\",\n                \"street\": \"23 st\",\n                \"zipCode\": \"11231\"\n            },\n            \"accounts\": [\n                \"e599d3f7-bb77-4d6e-91e2-83f500c9503a\"\n            ]\n        }\n    ],\n    \"totalCount\": 2,\n    \"pageNumber\": 1,\n    \"pageSize\": 1,\n    \"totalPages\": 1,\n    \"isSuccess\": true\n}"
+								},
+								{
+									"name": "Success - PageSize 1",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Client/get-clients?Page=1&PageSize=1&SortBy=1&SortDescending=false",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Client",
+												"get-clients"
+											],
+											"query": [
+												{
+													"key": "Page",
+													"value": "1",
+													"description": "Page default value is 1"
+												},
+												{
+													"key": "PageSize",
+													"value": "1",
+													"description": "Page size default value is 10"
+												},
+												{
+													"key": "SearchByName",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "SearchByPersonalID",
+													"value": "ad mollit irure magna",
+													"disabled": true
+												},
+												{
+													"key": "SearchByEmail",
+													"value": "ad mollit irure magna",
+													"disabled": true
+												},
+												{
+													"key": "SortBy",
+													"value": "1",
+													"description": "<ul><li><i>1</i> = Name</li><li><i>2</i> = Country</li></ul>"
+												},
+												{
+													"key": "SortDescending",
+													"value": "false"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 15 Nov 2022 20:56:44 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Kestrel"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"objectKey\": \"9b2de49e-0299-4263-a459-db9c9ae5be75\",\n            \"personalId\": \"11212121234\",\n            \"firstName\": \"AA\",\n            \"lastName\": \"Alhazzani\",\n            \"email\": \"F.Alhazzani@outlook.com\",\n            \"mobileNo\": \"+966555546135\",\n            \"profilePhoto\": \"fdf\",\n            \"address\": {\n                \"country\": \"Saudi Arabia\",\n                \"city\": \"Riyadh\",\n                \"street\": \"23 st\",\n                \"zipCode\": \"11231\"\n            },\n            \"accounts\": [\n                \"64aaf7a1-b8b0-4180-8661-ce9d4bd29dbf\"\n            ]\n        }\n    ],\n    \"totalCount\": 2,\n    \"pageNumber\": 1,\n    \"pageSize\": 1,\n    \"totalPages\": 2,\n    \"isSuccess\": true\n}"
+								},
+								{
+									"name": "Success - SearchName",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Client/get-clients?Page=1&PageSize=10&SearchByName=Faisal&SortBy=1&SortDescending=false",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Client",
+												"get-clients"
+											],
+											"query": [
+												{
+													"key": "Page",
+													"value": "1",
+													"description": "Page default value is 1"
+												},
+												{
+													"key": "PageSize",
+													"value": "10",
+													"description": "Page size default value is 10"
+												},
+												{
+													"key": "SearchByName",
+													"value": "Faisal"
+												},
+												{
+													"key": "SearchByPersonalID",
+													"value": "ad mollit irure magna",
+													"disabled": true
+												},
+												{
+													"key": "SearchByEmail",
+													"value": "ad mollit irure magna",
+													"disabled": true
+												},
+												{
+													"key": "SortBy",
+													"value": "1",
+													"description": "<ul><li><i>1</i> = Name</li><li><i>2</i> = Country</li></ul>"
+												},
+												{
+													"key": "SortDescending",
+													"value": "false"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 15 Nov 2022 20:58:23 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Kestrel"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"objectKey\": \"e16d1021-cc2c-4358-ad0e-22c66b2c05a0\",\n            \"personalId\": \"12131232141\",\n            \"firstName\": \"Faisal\",\n            \"lastName\": \"Alhazzani\",\n            \"email\": \"F.Alhazzani@outlook.com\",\n            \"mobileNo\": \"+966555546135\",\n            \"profilePhoto\": \"fdf\",\n            \"address\": {\n                \"country\": \"Saudi Arabia\",\n                \"city\": \"Riyadh\",\n                \"street\": \"23 st\",\n                \"zipCode\": \"11231\"\n            },\n            \"accounts\": [\n                \"e599d3f7-bb77-4d6e-91e2-83f500c9503a\"\n            ]\n        }\n    ],\n    \"totalCount\": 1,\n    \"pageNumber\": 1,\n    \"pageSize\": 1,\n    \"totalPages\": 1,\n    \"isSuccess\": true\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "localhost:7230",
+			"type": "string"
+		}
+	]
+}

@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingControlPanel.Api", "BankingControlPanel.Api\BankingControlPanel.Api.csproj", "{B59F77A4-50F2-4B61-839C-12FB9348C44B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankingControlPanel.Api", "BankingControlPanel.Api\BankingControlPanel.Api.csproj", "{B59F77A4-50F2-4B61-839C-12FB9348C44B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingControlPanel.Core", "BankingControlPanel.Core\BankingControlPanel.Core.csproj", "{D6A35EFF-EE58-45C1-9F73-123AC0D2CF72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankingControlPanel.Core", "BankingControlPanel.Core\BankingControlPanel.Core.csproj", "{D6A35EFF-EE58-45C1-9F73-123AC0D2CF72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingControlPanel.Services", "BankingControlPanel.Services\BankingControlPanel.Services.csproj", "{D941E38F-29C9-4C59-BDAE-79F4C19716EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankingControlPanel.Services", "BankingControlPanel.Services\BankingControlPanel.Services.csproj", "{D941E38F-29C9-4C59-BDAE-79F4C19716EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingControlPanel.Persistence", "BankingControlPanel.Persistence\BankingControlPanel.Persistence.csproj", "{3D651555-5076-4FB9-B826-40F33FC65352}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankingControlPanel.Persistence", "BankingControlPanel.Persistence\BankingControlPanel.Persistence.csproj", "{3D651555-5076-4FB9-B826-40F33FC65352}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
