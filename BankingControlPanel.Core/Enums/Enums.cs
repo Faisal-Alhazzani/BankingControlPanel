@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BankingControlPanel.Core.Enums
+﻿namespace BankingControlPanel.Core.Enums
 {
-    public enum Gender
+    public enum Sex
     {
         Male = 1,
         Female = 2
+    }
+    public enum ClientTableSortBy
+    {
+        Name = 1,
+        Country = 2
     }
 }

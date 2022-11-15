@@ -15,7 +15,9 @@ namespace BankingControlPanel.Persistence.Contexts
         {
 
         }
-
         public DbSet<Client> Clients { get; set; }
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<Address> Addresses { get; set; }
     }
 }
+ 
