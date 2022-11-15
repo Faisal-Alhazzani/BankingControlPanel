@@ -28,11 +28,11 @@ namespace BankingControlPanel.Services
                 ProfilePhoto = clientRequestDto.ProfilePhoto,
                 Sex = clientRequestDto.Sex
             };
-            
+
             var Address = new Address()
             {
                 City = clientRequestDto.City,
-                Country = clientRequestDto.Country, 
+                Country = clientRequestDto.Country,
                 ZipCode = clientRequestDto.ZipCode,
                 Street = clientRequestDto.Street,
             };
@@ -71,11 +71,11 @@ namespace BankingControlPanel.Services
             request.Page = request.Page
                 .AtLeast(1);
 
-             request.SearchByName = request.SearchByName?.ToLower().Trim() ?? string.Empty;
+            request.SearchByName = request.SearchByName?.ToLower().Trim() ?? string.Empty;
 
-             request.SearchByEmail = request.SearchByEmail?.ToLower().Trim() ?? string.Empty;
+            request.SearchByEmail = request.SearchByEmail?.ToLower().Trim() ?? string.Empty;
 
-             request.SearchByPersonalID = request.SearchByPersonalID?.ToLower().Trim() ?? string.Empty;
+            request.SearchByPersonalID = request.SearchByPersonalID?.ToLower().Trim() ?? string.Empty;
 
             // get clients using client repo
             var result = await _clientRepository.GetClientsAsync(request);
@@ -100,7 +100,8 @@ namespace BankingControlPanel.Services
             response.PageSize = result.PageNumber;
 
             // map model to response dto
-            response.Data = result.Data.Select(c => new ClientResponseDto() {
+            response.Data = result.Data.Select(c => new ClientResponseDto()
+            {
                 ObjectKey = c.ObjectKey,
                 FirstName = c.FirstName,
                 LastName = c.LastName,

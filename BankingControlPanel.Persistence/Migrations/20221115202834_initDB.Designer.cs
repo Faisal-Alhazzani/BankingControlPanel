@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankingControlPanel.Persistence.Migrations
 {
     [DbContext(typeof(BankingControlPanelContext))]
-    [Migration("20221115165656_initDB")]
+    [Migration("20221115202834_initDB")]
     partial class initDB
     {
         /// <inheritdoc />
