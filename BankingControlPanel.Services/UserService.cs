@@ -14,11 +14,45 @@ namespace BankingControlPanel.Services
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IConfiguration _configuration;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public UserService(UserManager<IdentityUser> userManager, IConfiguration configuration)
+        public UserService(UserManager<IdentityUser> userManager, IConfiguration configuration, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _configuration = configuration;
+            _roleManager = roleManager;
+        }
+
+        public async Task<AssignRoleResponseDto> AssignRoleToUser(string name)
+        {
+            var user = await _userManager.FindByEmailAsync(name);
+
+            var response = new AssignRoleResponseDto();
+            var errors = new List<string>();
+
+            if (user is null)
+            {
+                errors.Add("Invalid email, no user is registered with the entered email.");
+                response.Errors = errors;
+                response.IsSuccess = false;
+                return response;
+            }
+
+            var role = await _roleManager.RoleExistsAsync(name);
+
+            if (!role)
+            {
+                errors.Add("Role doesn't exist, please make sure to add role with this name.");
+                response.Errors = errors;
+                response.IsSuccess = false;
+                return response;
+            }
+
+            await _userManager.AddToRoleAsync(user, name);
+
+            response.IsSuccess = true;
+
+            return response;
         }
 
         public async Task<LoginResponseDto> LoginUserAsync(LoginRequestDto loginRequest)
@@ -35,7 +69,6 @@ namespace BankingControlPanel.Services
                 response.IsSuccess = false;
                 return response;
             }
-
             var isValidCredentials = await _userManager.CheckPasswordAsync(user: user,
                                                                            password: loginRequest.Password);
             if (!isValidCredentials)
@@ -67,6 +100,17 @@ namespace BankingControlPanel.Services
             return response;
         }
 
+        public async Task<RegisterResponseDto> RegisterAdminAsync(RegisterRequestDto registerRequest)
+        {
+            var identityUser = new IdentityUser
+            {
+                Email = registerRequest.Email,
+                UserName = registerRequest.Email
+            };
+
+            return await CreateUserWithRole(identityUser, registerRequest.Password, "Admin");
+        }
+
         public async Task<RegisterResponseDto> RegisterUserAsync(RegisterRequestDto registerRequest)
         {
             var identityUser = new IdentityUser
@@ -75,13 +119,19 @@ namespace BankingControlPanel.Services
                 UserName = registerRequest.Email
             };
 
-            var result = await _userManager.CreateAsync(user: identityUser,
-                                                        password: registerRequest.Password);
+            return await CreateUserWithRole(identityUser, registerRequest.Password, "User");
+        }
+
+        private async Task<RegisterResponseDto> CreateUserWithRole(IdentityUser user, string password ,string role)
+        {
+            var result = await _userManager.CreateAsync(user: user,
+                password: password);
 
             var response = new RegisterResponseDto();
             // case created
             if (result.Succeeded)
             {
+                await _userManager.AddToRoleAsync(user, role);
                 response.IsSuccess = true;
                 return response;
             }

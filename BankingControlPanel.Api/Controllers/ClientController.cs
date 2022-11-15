@@ -7,7 +7,7 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace BankingControlPanel.Api.Controllers
 {
-
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ClientController : ControllerBase
@@ -25,6 +25,7 @@ namespace BankingControlPanel.Api.Controllers
         OperationId = "CreateClient"
         )]
         [HttpPost("create-client")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<CreateClientResponseDto>> CreateClientAsync([FromBody] CreateClientRequestDto createClientRequestDto)
         {
             var result = await _clientService.CreateClientAsync(createClientRequestDto);
@@ -38,6 +39,7 @@ namespace BankingControlPanel.Api.Controllers
         OperationId = "GetClients"
         )]
         [HttpGet("get-clients")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<PagedList<ClientResponseDto>>> GetClientsAsync([FromQuery] GetClientsRequestDto getClientsRequestDto)
         {
             var result = await _clientService.GetClientsAsync(getClientsRequestDto);
