@@ -29,7 +29,7 @@ namespace BankingControlPanel.Api.Controllers
         OperationId = "SeedRole"
         )]
         [HttpPost("seed-roles")]
-        public async Task<ActionResult> SeedRoles([FromBody] LoginRequestDto requestDto)
+        public async Task<ActionResult> SeedRoles()
         {
             await _userService.SeedRoles();
             return NoContent();
