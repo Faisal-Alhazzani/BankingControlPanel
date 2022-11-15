@@ -13,7 +13,7 @@ namespace BankingControlPanel.Core.DTOs.RequestDTOs
         public int? Page { get; set; }
         [Description("Page size default value is 10")]
         public int? PageSize { get; set; }
-        public string? SearchByName { get; set; }
+        public string? SearchByName { get; set; } 
         public string? SearchByPersonalID { get; set; }
         public string? SearchByEmail { get; set; }
         [EnumDataType(typeof(ClientTableSortBy))]
